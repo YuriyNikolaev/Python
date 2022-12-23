@@ -1,6 +1,9 @@
+# теорема Пифагора
+
 from math import sqrt
 print('Pythagorean theorem calculator! Calculate your triangle sides.')
 print('Assume the sides are a, b, c and c is the hypotenuse (the side opposite the right angle')
+
 formula = input('Which side (a, b, c) do you wish to calculate? side> ')
 if formula =='c':
 	side_a = int(input('Input the length of side a: '))
