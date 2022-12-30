@@ -13,4 +13,4 @@ while brosok != 100:
 		reshka += 1
 	brosok += 1
 
-print("Бросков всего: ", )
+print("Бросков всего: ", brosok)
