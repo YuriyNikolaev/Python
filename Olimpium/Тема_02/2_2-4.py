@@ -2,18 +2,10 @@
 # Отредактировать предложение, удаляя из него лишние пробелы, 
 # оставляя только по одному пробелу между словами.
 
-input_str = " удаляя   из него  лишние   пробелы    "
-temp = input_str.split()
-print(temp) 
+my_string = '  Удаляя   из него  лишние   пробелы.    '
 
-new_str = temp.split(" ")
-print(new_str) 
+my_list = my_string.split()
+print( my_list )
 
-# new_str = ""
-
-# for i in input_str:
-#     # print(i, end="-")
-#     if i != " ":
-#         new_str += i
-#     print(new_str)    
-
+new_list = " ".join(my_list)
+print(new_list)
