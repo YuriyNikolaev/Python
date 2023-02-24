@@ -26,7 +26,7 @@ while user != 0:
 	if user == 1 and pc == 1:
 		print("Ничья: Камень-Камень")
 		print("win_user = ", win_user)
-        print("win_pc = ", win_pc)
+    print("win_pc = ", win_pc)
 
 	# если игрок = камень и комп = ножницы, тогда - выиграл игрок
 	if user == 1 and pc == 2:
@@ -38,7 +38,7 @@ while user != 0:
 
 	# если игрок = камень и комп = бумага, тогда - выиграл комп 
 	if user == 1 and pc == 3:
-	    print("Выиграл комп. Игрок = камень, комп = бумага")
+	  print("Выиграл комп. Игрок = камень, комп = бумага")
 		win_pc = win_pc + 1
 		print("win_user = ", win_user)
 		print("win_pc = ", win_pc)
