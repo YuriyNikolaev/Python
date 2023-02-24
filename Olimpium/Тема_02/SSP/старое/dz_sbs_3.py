@@ -1,10 +1,11 @@
 # камень ножницы бумага
-# на два игрока и комп
+# на два игрока и комп, т.е на 3и игрока
 
 from random import *
 
 # кол-во раундов
-games = int(input("До скольки побед играем? "))
+# games = int(input("До скольки побед играем? "))
+games = 3
 
 # выбор игрока
 # камень = 1, ножницы = 2, бумага = 3
@@ -22,7 +23,7 @@ win_pc = 0
 
 # игровой цикл
 while win_user1 < games and win_user2 < games and win_pc < games:
-	
+
     # проверка условий
     if user1 == pc and user2 == pc and user1 == user2:
         print("Ничья!")
@@ -35,18 +36,19 @@ while win_user1 < games and win_user2 < games and win_pc < games:
     elif user1 == 3 and pc == 1:
         print("Выиграл игрок1")
         win_user1 += 1
-        
+
     else:
         print("Выиграл комп1")
         win_pc += 1
 
-	# выбор компьютера
+        # выбор компьютера
     pc = randrange(1, 4, 1)
-	
-	# выбор игрока
+
+    # выбор игрока
     user = int(input("Введите 1 - камень, 2 - ножницы, 3 - бумага:  "))
 
 print("======")
 print("Итого:")
-print("win_user = ", win_user1)
+print("win_user1 = ", win_user1)
+print("win_user2 = ", win_user2)
 print("win_pc = ", win_pc)
