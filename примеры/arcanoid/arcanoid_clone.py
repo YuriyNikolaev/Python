@@ -26,6 +26,15 @@ def draw():
     bar.draw()
     paddle.draw()
     ball.draw()
+    bar_x = 120
+    bar_y = 100
+    for i in range(8):
+        bar = Actor("element_blue_rectangle_glossy.png")
+        bar.x = bar_x
+        bar.y = bar_y
+        bar.draw()
+
+        bar_x += 70
 
 
 def update():
