@@ -16,30 +16,22 @@ ball = Actor("ballblue.png")
 ball.x = 30
 ball.y = 300
 
-bar = Actor("element_blue_rectangle_glossy.png")
-bar.x = 120
-bar.y = 100
+ball_x_speed = 1
+ball_y_speed = 1
+
+# bar = Actor("element_blue_rectangle_glossy.png")
+# bar.x = 120
+# bar.y = 100
 
 bars_list = []
 
 
 def draw():
     screen.blit("background.png", (0, 0))
-    bar.draw()
     paddle.draw()
     ball.draw()
-    place_blue_bars()
-
-def place_blue_bars():
-    bar_x = 120
-    bar_y = 100
-    for i in range(8):
-        bar = Actor("element_blue_rectangle_glossy.png")
-        bar.x = bar_x
-        bar.y = bar_y
+    for bar in bars_list:
         bar.draw()
-
-        bar_x += 70
 
 def place_bars(x, y, image):
     bar_x = x
@@ -51,11 +43,22 @@ def place_bars(x, y, image):
         bar_x += 70
         bars_list.append(bar)
 
-
-
 def update():
-    pass
+    update_ball()
+    if keyboard.left:
+        paddle.x = paddle.x - 5
+    if keyboard.right:
+        paddle.x = paddle.x + 5
 
+
+def update_ball():
+    global ball_x_speed, ball_y_speed
+    ball.x -= ball_x_speed
+    ball.y -= ball_y_speed
+    if(ball.x >= WIDTH) or (ball.x <= 0):
+        ball_x_speed *= -1
+    if(ball.y >= HEIGHT) or (ball.y <= 0):
+        ball_y_speed *= -1
 
 coloured_box_list = ["element_blue_rectangle_glossy.png", 
                     "element_green_rectangle_glossy.png", 
