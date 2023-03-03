@@ -1,4 +1,5 @@
-# ссылка https://python-scripts.com/creating-game-in-30-minutes#install-pygame-zero
+# ссылка RUS https://python-scripts.com/creating-game-in-30-minutes#install-pygame-zero
+# ссылка ENG https://new.pythonforengineers.com/blog/your-first-game-in-python-in-less-than-30-minutes/
 
 import pgzrun  # может быть предупреждение, но код работает
 import random
@@ -44,11 +45,24 @@ def place_bars(x, y, image):
         bars_list.append(bar)
 
 def update():
-    update_ball()
+    global ball_x_speed, ball_y_speed
     if keyboard.left:
         paddle.x = paddle.x - 5
     if keyboard.right:
         paddle.x = paddle.x + 5
+    
+    update_ball()
+    for bar in bars_list:
+        if ball.colliderect(bar):
+            bars_list.remove(bar)
+            ball_y_speed *= -1
+    
+    if paddle.colliderect(ball):
+        ball_y_speed *= -1
+        # randomly move ball left or right
+        rand = random.randint(0, 1)
+        if rand:
+            ball_x_speed *= -1
 
 
 def update_ball():
