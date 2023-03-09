@@ -7,15 +7,22 @@
 # При этом слова должны быть отображены в том же порядке, в  каком их вводили с клавиатуры
 
 user_list = []
-user_list = ['first', 'second', 'first', 'third', 'second']
+# user_list = ['first', 'second', 'first', 'third', 'second']
 
-# word = input("Введите слово ")
+word = input("Введите слово ")
 
 while word != '':
 	user_list.append(word)
-# 	word = input("Введите слово ")
+	word = input("Введите слово ")
+
+temp_list = []
+
+for word in user_list:
+    if word not in temp_list:
+        temp_list.append(word)
+
+user_list = temp_list
 
 user_list.sort()
 
 print(user_list)
-
