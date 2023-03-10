@@ -87,6 +87,7 @@ print()
 
 # Run through 100,000 simulations:
 print('Generating', numBDays, 'random birthdays 100,000 times...')
+
 input('Press Enter to begin...')
 
 print('Let\'s run another 100,000 simulations.')
