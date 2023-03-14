@@ -4,8 +4,9 @@ Explore the surprising probabilities of the "Birthday Paradox".
 Vore info at https://en.wikipedia.org/wiki/Birthday_problem
 View this code at https://nostarch.com/big-book-small-python-projects
 Tags: short, math, simulation"""
+import datetime
+import random
 
-import datetime, random
 
 def getBirthdays(numberOfBirthdays):
     """Return a list of number random date objects for birthdays."""
@@ -26,7 +27,7 @@ def getMatch(birthdays):
     """Returns the date object of a birthday that occurs more than once
     in the birthdays list."""
     if len(birthdays) == len(set(birthdays)):
-        return  None  # All birthdays are unique, so return None.
+        return None  # All birthdays are unique, so return None.
 
     # Compare each birthday to every other birthday:
     for a, birthdayA in enumerate(birthdays):
@@ -61,7 +62,7 @@ print()
 # Generate and display the birthdays:
 print('Here are', numBDays, 'birthdays: ')
 birthdays = getBirthdays(numBDays)
-for i, birthdays in enumerate(birthdays):
+for i, birthday in enumerate(birthdays):
     if i != 0:
         # Display a comma for each birthday after the first birthday.
         print(', ', end='')
@@ -86,13 +87,14 @@ print()
 
 # Run through 100,000 simulations:
 print('Generating', numBDays, 'random birthdays 100,000 times...')
+
 input('Press Enter to begin...')
 
 print('Let\'s run another 100,000 simulations.')
-simMatch = 0 # How many simulations had matching birthdays in them.
-for i in range(100_000):
+simMatch = 0  # How many simulations had matching birthdays in them.
+for i in range(100000):
     # Report on the progress every 10,000 simulations:
-    if i % 10_000 == 0:
+    if i % 10000 == 0:
         print(i, 'simulations run...')
     birthdays = getBirthdays((numBDays))
     if getMatch(birthdays) != None:
@@ -100,7 +102,7 @@ for i in range(100_000):
 print('100,000 simulations run.')
 
 # Display simulation results:
-probability = round(simMatch / 100_000 * 100, 2)
+probability = round(simMatch / 100000 * 100, 2)
 print('Out of 100,000 simulations of', numBDays, 'people, there was a')
 print('matching birthdays in that group', simMatch, 'times. This means')
 print('that', numBDays, 'people have a', probability, '% chance of')
