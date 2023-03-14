@@ -1,7 +1,3 @@
-s = 0
+b = "str"
 
-for k in range(3,11):
-
-    s = s + k
-
-print(s)
+print(b[3])
