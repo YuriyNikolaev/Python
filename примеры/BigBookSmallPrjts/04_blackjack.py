@@ -60,6 +60,24 @@ def main():
             if getHandValue(playerHand) > 21:
                 break
 
+            # Get the player's move, either H, S, or D:
+            move = getMove(playerHand, money - bet)
+
+            # Handle the player actions:
+            if move == 'D':
+                # PLayer is doubling down, they can increase their bet:
+                additionalBet = getBet(min(bet, (money - bet)))
+                bet += additionalBet
+                print('Bet increased to {}'.format(bet))
+                print('Bet:', bet)
+
+            if move in ('H', 'D'):
+                # Hit/doubling down takes another card.
+                newCard = deck.pop()
+                rank, suit = newCard
+                print('You drew a {} of {}'.format(rank, suit))
+                playerHand.append(newCard)
+
 
 # If the program is run (instead of imported), run the game:
 if __name__ == '__main__':
