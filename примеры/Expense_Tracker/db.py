@@ -27,7 +27,9 @@ DELETE_HOUSEHOLD = "DELETE *FROM household WHERE good = ? AND price = ?;"
 DELETE_ENTERTAMENT = "DELETE *FROM entertament WHERE good = ? AND price = ?;"
 DELETE_OTHER = "DELETE *FROM other WHERE good = ? AND price = ?;"
 
-###CREATE FOR EVERY TABLE ###
+### CREATE FOR EVERY TABLE ###
+
+
 def create_tables():
     conn = sqlite3.connect('data.db')
     with conn:
@@ -35,12 +37,14 @@ def create_tables():
 
 ### INSERT VALUES ###
 
+
 def insert_groceries(good, price, date):
     conn = sqlite3.connect('data.db')
     with conn:
         c = conn.cursor()
-        c.execute(INSERT_GROSERIES, (good, price, date))
+        c.execute(INSERT_GROCERIES, (good, price, date))
         conn.commit()
+
 
 def insert_houshold(good, price, date):
     conn = sqlite3.connect('data.db')
@@ -50,6 +54,7 @@ def insert_houshold(good, price, date):
         conn.commit()
         c.close()
 
+
 def insert_entertaiment(good, price, date):
     conn = sqlite3.connect('data.db')
     with conn:
@@ -57,6 +62,7 @@ def insert_entertaiment(good, price, date):
         c.execute(INSERT_ENTERTAMENT, (good, price, date))
         conn.commit()
         c.close()
+
 
 def insert_other(good, price, date):
     conn = sqlite3.connect('data.db')
@@ -68,6 +74,7 @@ def insert_other(good, price, date):
 
 ### SELECT ALL ###
 
+
 def select_all_groceries():
     conn = sqlite3.connect('data.db')
     with conn:
@@ -78,8 +85,10 @@ def select_all_groceries():
         c.close()
         output = ''
         for x in list:
-            output = output + str(x[1]) + ' ' + str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
+            output = output + str(x[1]) + ' ' + \
+                str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
         return output
+
 
 def select_all_household():
     conn = sqlite3.connect('data.db')
@@ -91,8 +100,10 @@ def select_all_household():
         c.close()
         output = ''
         for x in list:
-            output = output + str(x[1]) + ' ' + str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
+            output = output + str(x[1]) + ' ' + \
+                str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
         return output
+
 
 def select_all_entertaiment():
     conn = sqlite3.connect('data.db')
@@ -104,8 +115,10 @@ def select_all_entertaiment():
         c.close()
         output = ''
         for x in list:
-            output = output + str(x[1]) + ' ' + str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
+            output = output + str(x[1]) + ' ' + \
+                str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
         return output
+
 
 def select_all_other():
     conn = sqlite3.connect('data.db')
@@ -117,10 +130,12 @@ def select_all_other():
         c.close()
         output = ''
         for x in list:
-            output = output + str(x[1]) + ' ' + str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
+            output = output + str(x[1]) + ' ' + \
+                str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
         return output
 
 ### SELECT SPECIFIC ###
+
 
 def select_grocery(good, price):
     conn = sqlite3.connect('data.db')
@@ -132,8 +147,10 @@ def select_grocery(good, price):
         c.close()
         output = ''
         for x in list:
-            output = output + str(x[1]) + ' ' + str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
+            output = output + str(x[1]) + ' ' + \
+                str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
         return output
+
 
 def select_household(good, price):
     conn = sqlite3.connect('data.db')
@@ -145,8 +162,10 @@ def select_household(good, price):
         c.close()
         output = ''
         for x in list:
-            output = output + str(x[1]) + ' ' + str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
+            output = output + str(x[1]) + ' ' + \
+                str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
         return output
+
 
 def select_entertaiment(good, price):
     conn = sqlite3.connect('data.db')
@@ -158,8 +177,10 @@ def select_entertaiment(good, price):
         c.close()
         output = ''
         for x in list:
-            output = output + str(x[1]) + ' ' + str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
+            output = output + str(x[1]) + ' ' + \
+                str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
         return output
+
 
 def select_other(good, price):
     conn = sqlite3.connect('data.db')
@@ -171,10 +192,12 @@ def select_other(good, price):
         c.close()
         output = ''
         for x in list:
-            output = output + str(x[1]) + ' ' + str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
+            output = output + str(x[1]) + ' ' + \
+                str(x[2]) + ' ' + ' ' + str(x[3]) + '\n'
         return output
 
 ### DELETE VALUE ###
+
 
 def deltet_grocery(good, price):
     conn = sqlite3.connect('data.db')
@@ -184,6 +207,7 @@ def deltet_grocery(good, price):
         conn.commit()
         c.close()
 
+
 def deltet_household(good, price):
     conn = sqlite3.connect('data.db')
     with conn:
@@ -192,6 +216,7 @@ def deltet_household(good, price):
         conn.commit()
         c.close()
 
+
 def delete_entertaiment(good, price):
     conn = sqlite3.connect('data.db')
     with conn:
@@ -199,6 +224,7 @@ def delete_entertaiment(good, price):
         c.execute(DELETE_ENTERTAMENT, (good, price))
         conn.commit()
         c.close()
+
 
 def deltet_other(good, price):
     conn = sqlite3.connect('data.db')
