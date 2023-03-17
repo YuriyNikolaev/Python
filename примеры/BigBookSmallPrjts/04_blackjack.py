@@ -78,6 +78,33 @@ def main():
                 print('You drew a {} of {}'.format(rank, suit))
                 playerHand.append(newCard)
 
+                if getHandValue(playHand) > 21:
+                    # The player has busted:
+                    continue
+
+
+def getBet(maxBet):
+    """Ask the player how much they want to bet for this round."""
+    while True:  # Keep asking until they enter a valid amount.
+        print('How much do you bet? (1-{}, or QUOT)'.format(maxBet))
+        bet = input('>').upper().strip()
+        if bet == 'QUIT':
+            print('Thinks for playing')
+            sys.exit()
+
+        if not bet.isdecimal():
+            continue # If the player didn't enter a number, ask again.
+
+        bet = int(bet)
+        if 1 <= bet <= maxBet:
+            return bet # Player entered a valid bet.
+
+def getDeck():
+    """Return a list (rank, suit) tuples for all 52 cards."""
+    deck = []
+    for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
+        for rank in range(2, 11):
+            deck.append((str(rank), suit)) # Add the number cards.
 
 # If the program is run (instead of imported), run the game:
 if __name__ == '__main__':
