@@ -60,7 +60,7 @@ class ExpenseTracker:
                          command=self.household)
         button2.pack()
 
-        button3 = Button(self.frame, text="Entertament expenses",
+        button3 = Button(self.frame, text="Entertaiment expenses",
                          command=self.entertaiment)
         button3.pack()
 
@@ -77,7 +77,8 @@ class ExpenseTracker:
         top.title('Groceries expense')
         l1 = Label(top, text="Name of good").grid(
             row=1, column=0, sticky=W, pady=2)
-        l2 = Label(top, text="Price").grid(row=2, column=0, sticky=W, pady=2)
+        l2 = Label(top, text="Price").grid(
+            row=2, column=0, sticky=W, pady=2)
         l3 = Label(top, text="Date of purchase").grid(
             row=3, column=0, sticky=W, pady=2)
 
@@ -133,8 +134,8 @@ class ExpenseTracker:
 
         # BUTTONS #
 
-        B1 = Button(top, text="Insrt Values",
-                    command=lambda: (self.insert(db.insert_houshold, e1, e2, e3), self.added(top)))
+        B1 = Button(top, text="Insert Values",
+                    command=lambda: (self.insert(db.insert_household, e1, e2, e3), self.added(top)))
         B1.grid(row=1, column=2)
 
         B2 = Button(top, text="Select All",
@@ -154,7 +155,7 @@ class ExpenseTracker:
 
     def entertaiment(self):
         top = Toplevel(self.frame)
-        top.title('Entertament expenses')
+        top.title('Entertaiment expenses')
         l1 = Label(top, text="Name of good").grid(
             row=1, column=0, sticky=W, pady=2)
         l2 = Label(top, text="Price").grid(row=2, column=0, sticky=W, pady=2)
@@ -193,7 +194,7 @@ class ExpenseTracker:
 
     def other(self):
         top = Toplevel(self.frame)
-        top.title('Entertament expenses')
+        top.title('Entertaiment expenses')
         l1 = Label(top, text="Name of good").grid(
             row=1, column=0, sticky=W, pady=2)
         l2 = Label(top, text="Price").grid(row=2, column=0, sticky=W, pady=2)

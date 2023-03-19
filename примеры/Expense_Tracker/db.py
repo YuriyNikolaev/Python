@@ -4,27 +4,27 @@ now = datetime.datetime.utcnow()
 
 CREATE_GROCERIES = "CREATE TABLE IF NOT EXISTS groceries (id INTEGER PRIMARY KEY, good TEXT, price INTEGER, date DATE);"
 CREATE_HOUSEHOLD = "CREATE TABLE IF NOT EXISTS household (id INTEGER PRIMARY KEY, good TEXT, price INTEGER, date DATE);"
-CREATE_ENTERTAMENT = "CREATE TABLE IF NOT EXISTS entertament (id INTEGER PRIMARY KEY, good TEXT, price INTEGER, date DATE);"
+CREATE_ENTERTAIMENT = "CREATE TABLE IF NOT EXISTS entertaiment (id INTEGER PRIMARY KEY, good TEXT, price INTEGER, date DATE);"
 CREATE_OTHER = "CREATE TABLE IF NOT EXISTS other (id INTEGER PRIMARY KEY, good TEXT, price INTEGER, date DATE);"
 
 INSERT_GROCERIES = "INSERT INTO groceries (good, price, date) VALUES(?, ?, ?);"
 INSERT_HOUSEHOLD = "INSERT INTO household (good, price, date) VALUES(?, ?, ?);"
-INSERT_ENTERTAMENT = "INSERT INTO entertament (good, price, date) VALUES(?, ?, ?);"
+INSERT_ENTERTAIMENT = "INSERT INTO entertaiment (good, price, date) VALUES(?, ?, ?);"
 INSERT_OTHER = "INSERT INTO other (good, price, date) VALUES(?, ?, ?);"
 
 SELECT_ALL1 = "SELECT * FROM groceries;"
 SELECT_ALL2 = "SELECT * FROM household;"
-SELECT_ALL3 = "SELECT * FROM entertament;"
+SELECT_ALL3 = "SELECT * FROM entertaiment;"
 SELECT_ALL4 = "SELECT * FROM other;"
 
 SELECT_GROCERIES = "SELECT *FROM groceries WHERE good = ? AND price = ?;"
 SELECT_HOUSEHOLD = "SELECT *FROM household WHERE good = ? AND price = ?;"
-SELECT_ENTERTAMENT = "SELECT *FROM entertament WHERE good = ? AND price = ?;"
+SELECT_ENTERTAIMENT = "SELECT *FROM entertaiment WHERE good = ? AND price = ?;"
 SELECT_OTHER = "SELECT *FROM other WHERE good = ? AND price = ?;"
 
 DELETE_GROCERIES = "DELETE *FROM groceries WHERE good = ? AND price = ?;"
 DELETE_HOUSEHOLD = "DELETE *FROM household WHERE good = ? AND price = ?;"
-DELETE_ENTERTAMENT = "DELETE *FROM entertament WHERE good = ? AND price = ?;"
+DELETE_ENTERTAIMENT = "DELETE *FROM entertaiment WHERE good = ? AND price = ?;"
 DELETE_OTHER = "DELETE *FROM other WHERE good = ? AND price = ?;"
 
 ### CREATE FOR EVERY TABLE ###
@@ -46,7 +46,7 @@ def insert_groceries(good, price, date):
         conn.commit()
 
 
-def insert_houshold(good, price, date):
+def insert_household(good, price, date):
     conn = sqlite3.connect('data.db')
     with conn:
         c = conn.cursor()
@@ -59,7 +59,7 @@ def insert_entertaiment(good, price, date):
     conn = sqlite3.connect('data.db')
     with conn:
         c = conn.cursor()
-        c.execute(INSERT_ENTERTAMENT, (good, price, date))
+        c.execute(INSERT_ENTERTAIMENT, (good, price, date))
         conn.commit()
         c.close()
 
@@ -171,7 +171,7 @@ def select_entertaiment(good, price):
     conn = sqlite3.connect('data.db')
     with conn:
         c = conn.cursor()
-        c.execute(SELECT_ENTERTAMENT, (good, price))
+        c.execute(SELECT_ENTERTAIMENT, (good, price))
         # have to store data into a list Tuple
         list = c.fetchall()
         c.close()
@@ -221,12 +221,12 @@ def delete_entertaiment(good, price):
     conn = sqlite3.connect('data.db')
     with conn:
         c = conn.cursor()
-        c.execute(DELETE_ENTERTAMENT, (good, price))
+        c.execute(DELETE_ENTERTAIMENT, (good, price))
         conn.commit()
         c.close()
 
 
-def deltet_other(good, price):
+def delete_other(good, price):
     conn = sqlite3.connect('data.db')
     with conn:
         c = conn.cursor()
