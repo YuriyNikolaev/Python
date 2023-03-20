@@ -95,7 +95,7 @@ def main():
                 displayHands(playerHand, dealerHand, False)
 
                 if getHandValue(dealerHand) > 21:
-                    break # The dealer has busted.
+                    break  # The dealer has busted.
                 input('Press Enter to continue...')
                 print('\n\n')
 
@@ -105,7 +105,7 @@ def main():
         playerValue = getHandValue(playerHand)
         dealerValue = getHandValue(dealerHand)
         # Handle wither the player won, lost, or tied:
-        if gealerValue > 21:
+        if dealerValue > 21:
             print('Dealer busts! You win ${}!'.format(bet))
             money += bet
         elif (playerValue > 21) or (playerValue < dealerValue):
@@ -121,7 +121,6 @@ def main():
         print('\n\n')
 
 
-
 def getBet(maxBet):
     """Ask the player how much they want to bet for this round."""
     while True:  # Keep asking until they enter a valid amount.
@@ -132,22 +131,24 @@ def getBet(maxBet):
             sys.exit()
 
         if not bet.isdecimal():
-            continue # If the player didn't enter a number, ask again.
+            continue  # If the player didn't enter a number, ask again.
 
         bet = int(bet)
         if 1 <= bet <= maxBet:
-            return bet # Player entered a valid bet.
+            return bet  # Player entered a valid bet.
+
 
 def getDeck():
     """Return a list (rank, suit) tuples for all 52 cards."""
     deck = []
     for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
         for rank in range(2, 11):
-            deck.append((str(rank), suit)) # Add the number cards.
+            deck.append((str(rank), suit))  # Add the number cards.
         for rank in ('J', 'Q', 'K', 'A'):
             deck.append((rank, suit))      # Add the face and ace cards.
     random.shuffle(deck)
     return deck
+
 
 def displayHands(playerHand, dealerHand, showDealerHand):
     """Show the player's and dealer's cards/ Hide the dealer's first
@@ -165,6 +166,7 @@ def displayHands(playerHand, dealerHand, showDealerHand):
     print('PLAYER: ', getHandValue(playerHand))
     displayCards(playerHand)
 
+
 def getHandValue(cards):
     """Returns the value of the cards. Face cards are worth 10, 
     aces are worth 11 or 1 (this function picks the most 
@@ -174,16 +176,16 @@ def getHandValue(cards):
 
     # Add tha value for the non-ace cards:
     for card in cards:
-        rank = card[0] # card is a tuple like (rank, suit)
+        rank = card[0]  # card is a tuple like (rank, suit)
         if rank == 'A':
             numberOfAce += 1
         elif rank in ('K', 'Q', 'J'):  # Face cards are worth 10 points.
             value += 10
         else:
-            value += int(rank) # Number cards are worth their number.
+            value += int(rank)  # Number cards are worth their number.
 
     # Add the value for the aces:
-    value += numberOfAce # Add 1 per ace.
+    value += numberOfAce  # Add 1 per ace.
     for i in range(numberOfAce):
         # If another 10 can be added with busting, do so:
         if value + 10 <= 21:
@@ -191,13 +193,13 @@ def getHandValue(cards):
 
     return value
 
-    
+
 def displayCards(cards):
     """Display all the cards in the cards list. """
-    rows = ['', '', '', '', ''] # The text to display on each row.
+    rows = ['', '', '', '', '']  # The text to display on each row.
 
     for i, card in enumerate(cards):
-        rows[0] += ' ___  ' # Print the top line of the card.
+        rows[0] += ' ___  '  # Print the top line of the card.
         if card == BACKDISE:
             # Print a card's back:
             rows[1] += '|## | '
@@ -205,14 +207,15 @@ def displayCards(cards):
             rows[3] += '|_##| '
         else:
             # Print the card;s front:
-            rank, suit = card # The card is a tuple data structure.
+            rank, suit = card  # The card is a tuple data structure.
             rows[1] += '|{} | '.format(rank.ljust(2))
             rows[2] += '| {} | '.format(suit)
             rows[3] += '|_{}| '.format(rank.ljust(2, '_'))
 
-    #Print each row on the screen:
+    # Print each row on the screen:
     for row in rows:
         print(row)
+
 
 def getMove(playerHand, money):
     pass
