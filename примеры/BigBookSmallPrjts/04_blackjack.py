@@ -15,7 +15,7 @@ DIAMONDS = chr(9830)  # Character 9830 is '♦'.
 SPADES = chr(9824)   # Character 9824 is '♠'.
 CLUBS = chr(9827)    # Character 9827 is '♣'.
 # (A list of chr codes is at https://inventwithpython.com/charactermap)
-BACKDISE = 'backside'
+BACKSIDE = 'backside'
 
 
 def main():
@@ -160,7 +160,7 @@ def displayHands(playerHand, dealerHand, showDealerHand):
     else:
         print('DEALER: ???')
         # Hide the dealer's first card:
-        displayCards([BACKDISE] + dealerHand[1:])
+        displayCards([BACKSIDE] + dealerHand[1:])
 
     # Show the player's cards:
     print('PLAYER: ', getHandValue(playerHand))
@@ -200,7 +200,7 @@ def displayCards(cards):
 
     for i, card in enumerate(cards):
         rows[0] += ' ___  '  # Print the top line of the card.
-        if card == BACKDISE:
+        if card == BACKSIDE:
             # Print a card's back:
             rows[1] += '|## | '
             rows[2] += '|###| '
