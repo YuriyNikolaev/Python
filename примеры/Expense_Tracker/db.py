@@ -7,10 +7,12 @@ CREATE_HOUSEHOLD = "CREATE TABLE IF NOT EXISTS household (id INTEGER PRIMARY KEY
 CREATE_ENTERTAIMENT = "CREATE TABLE IF NOT EXISTS entertaiment (id INTEGER PRIMARY KEY, good TEXT, price INTEGER, date DATE);"
 CREATE_OTHER = "CREATE TABLE IF NOT EXISTS other (id INTEGER PRIMARY KEY, good TEXT, price INTEGER, date DATE);"
 
+
 INSERT_GROCERIES = "INSERT INTO groceries (good, price, date) VALUES(?, ?, ?);"
 INSERT_HOUSEHOLD = "INSERT INTO household (good, price, date) VALUES(?, ?, ?);"
 INSERT_ENTERTAIMENT = "INSERT INTO entertaiment (good, price, date) VALUES(?, ?, ?);"
 INSERT_OTHER = "INSERT INTO other (good, price, date) VALUES(?, ?, ?);"
+
 
 SELECT_ALL1 = "SELECT * FROM groceries;"
 SELECT_ALL2 = "SELECT * FROM household;"
@@ -27,9 +29,8 @@ DELETE_HOUSEHOLD = "DELETE *FROM household WHERE good = ? AND price = ?;"
 DELETE_ENTERTAIMENT = "DELETE *FROM entertaiment WHERE good = ? AND price = ?;"
 DELETE_OTHER = "DELETE *FROM other WHERE good = ? AND price = ?;"
 
+
 ### CREATE FOR EVERY TABLE ###
-
-
 def create_tables():
     conn = sqlite3.connect('data.db')
     with conn:
@@ -199,7 +200,7 @@ def select_other(good, price):
 ### DELETE VALUE ###
 
 
-def deltet_grocery(good, price):
+def delete_grocery(good, price):
     conn = sqlite3.connect('data.db')
     with conn:
         c = conn.cursor()
@@ -208,7 +209,7 @@ def deltet_grocery(good, price):
         c.close()
 
 
-def deltet_household(good, price):
+def delete_household(good, price):
     conn = sqlite3.connect('data.db')
     with conn:
         c = conn.cursor()

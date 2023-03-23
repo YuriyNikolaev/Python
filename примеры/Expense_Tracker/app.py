@@ -2,6 +2,7 @@
 # Expense Tracker
 # RU URL: https://digitrain.ru/articles/164593/
 # Git-Hub: https://github.com/Mozes721/Expense_Tracker
+# https://www.youtube.com/watch?v=7w7ITwOgUAE
 
 import db
 from tkinter import *
