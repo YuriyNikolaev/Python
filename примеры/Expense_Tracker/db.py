@@ -19,22 +19,27 @@ SELECT_ALL2 = "SELECT * FROM household;"
 SELECT_ALL3 = "SELECT * FROM entertaiment;"
 SELECT_ALL4 = "SELECT * FROM other;"
 
-SELECT_GROCERIES = "SELECT *FROM groceries WHERE good = ? AND price = ?;"
-SELECT_HOUSEHOLD = "SELECT *FROM household WHERE good = ? AND price = ?;"
-SELECT_ENTERTAIMENT = "SELECT *FROM entertaiment WHERE good = ? AND price = ?;"
-SELECT_OTHER = "SELECT *FROM other WHERE good = ? AND price = ?;"
+SELECT_GROCERIES = "SELECT * FROM groceries WHERE good = ? AND price = ?;"
+SELECT_HOUSEHOLD = "SELECT * FROM household WHERE good = ? AND price = ?;"
+SELECT_ENTERTAIMENT = "SELECT * FROM entertaiment WHERE good = ? AND price = ?;"
+SELECT_OTHER = "SELECT * FROM other WHERE good = ? AND price = ?;"
 
 DELETE_GROCERIES = "DELETE *FROM groceries WHERE good = ? AND price = ?;"
 DELETE_HOUSEHOLD = "DELETE *FROM household WHERE good = ? AND price = ?;"
 DELETE_ENTERTAIMENT = "DELETE *FROM entertaiment WHERE good = ? AND price = ?;"
 DELETE_OTHER = "DELETE *FROM other WHERE good = ? AND price = ?;"
 
+list_db = [CREATE_GROCERIES, CREATE_HOUSEHOLD,
+           CREATE_ENTERTAIMENT, CREATE_OTHER]
 
 ### CREATE FOR EVERY TABLE ###
+
+
 def create_tables():
     conn = sqlite3.connect('data.db')
     with conn:
-        return conn.execute(CREATE_OTHER)
+        for db in list_db:
+            conn.execute(db)
 
 ### INSERT VALUES ###
 
