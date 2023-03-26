@@ -29,11 +29,11 @@ DELETE_HOUSEHOLD = "DELETE *FROM household WHERE good = ? AND price = ?;"
 DELETE_ENTERTAIMENT = "DELETE *FROM entertaiment WHERE good = ? AND price = ?;"
 DELETE_OTHER = "DELETE *FROM other WHERE good = ? AND price = ?;"
 
-list_db = [CREATE_GROCERIES, CREATE_HOUSEHOLD,
-           CREATE_ENTERTAIMENT, CREATE_OTHER]
+
 
 ### CREATE FOR EVERY TABLE ###
-
+list_db = [CREATE_GROCERIES, CREATE_HOUSEHOLD,
+           CREATE_ENTERTAIMENT, CREATE_OTHER]
 
 def create_tables():
     conn = sqlite3.connect('data.db')
@@ -43,6 +43,8 @@ def create_tables():
 
 ### INSERT VALUES ###
 
+# create_tables()   # эта функция запускается всего один раз, чтобы создать таблицы
+                    # в vs code посмотреть таблицы в файле data.db можно с помощью SQLite Viwer
 
 def insert_groceries(good, price, date):
     conn = sqlite3.connect('data.db')
@@ -149,7 +151,7 @@ def select_grocery(good, price):
         c = conn.cursor()
         c.execute(SELECT_GROCERIES, (good, price))
         # have to store data into a list Tuple
-        list = c.fetchall()
+        list = c.fetchone()
         c.close()
         output = ''
         for x in list:
@@ -164,7 +166,7 @@ def select_household(good, price):
         c = conn.cursor()
         c.execute(SELECT_HOUSEHOLD, (good, price))
         # have to store data into a list Tuple
-        list = c.fetchall()
+        list = c.fetchone()
         c.close()
         output = ''
         for x in list:
@@ -179,7 +181,7 @@ def select_entertaiment(good, price):
         c = conn.cursor()
         c.execute(SELECT_ENTERTAIMENT, (good, price))
         # have to store data into a list Tuple
-        list = c.fetchall()
+        list = c.fetchone()
         c.close()
         output = ''
         for x in list:
@@ -194,7 +196,7 @@ def select_other(good, price):
         c = conn.cursor()
         c.execute(SELECT_OTHER, (good, price))
         # have to store data into a list Tuple
-        list = c.fetchall()
+        list = c.fetchone()
         c.close()
         output = ''
         for x in list:

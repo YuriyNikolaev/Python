@@ -20,8 +20,8 @@ class ExpenseTracker:
         # grid, labels, buttons wondows will come shortly after
 
 # display function calls for database update deletion and listing added or deleted
-    def added(self, boxaile):
-        myLabel = Label(boxaile, text='THe value has been inserted')
+    def added(self, boxaile): 
+        myLabel = Label(boxaile, text='The value has been inserted')
         myLabel.grid(row=4, column=0)
 
     def delete(self, boxaile):
@@ -88,7 +88,7 @@ class ExpenseTracker:
         e2 = Entry(top)
         e2.grid(row=2, column=1, sticky=W, pady=2)
         e3 = Entry(top)
-        e3.grid(row=5, column=1, sticky=W, pady=2)
+        e3.grid(row=3, column=1, sticky=W, pady=2)
 
         text = Text(top, width=40, height=10)
         text.grid(row=5, column=1, columnspan=2)
