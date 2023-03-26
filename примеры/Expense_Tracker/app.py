@@ -108,7 +108,7 @@ class ExpenseTracker:
         B3.grid(row=4, column=2)
 
         B3 = Button(top, text="Delete expense", command=lambda: (
-            self.delete_expense(db.deltet_grocery, e1, e2), self.delete(top)))
+            self.delete_expense(db.delete_grocery, e1, e2), self.delete(top)))
         B3.grid(row=4, column=2)
 
         B5 = Button(top, text="Exit", command=exit)
