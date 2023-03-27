@@ -109,8 +109,36 @@ def main():
             
             # Move the logo. (X moves by 2 because the terminal
             # characters are twice as tall as they are wide.)
-            
+            if logo[DIR] == UP_RIGHT:
+                logo[X] += 2
+                logo[Y] -= 1
+            elif logo[DIR] == UP_LEFT:
+                logo[X] -= 2
+                logo[Y] -= 1
+            elif logo[DIR] == DOWN_RIGHT:
+                logo[X] += 2
+                logo[Y] += 1
+            elif logo[DIR] == DOWN_LEFT:
+                logo[X] -= 2
+                logo[Y] += 1
 
+        
+        # Display number of corner bounces:
+        bext.goto(5, 0)
+        bext.fg('white')
+        print('Corner bounces:', cornerBounces, end='')
+
+        for logo in logos:
+        # Draw the logos at their new location:
+            bext.goto(logo[X], logo[Y])
+            bext.fg(logo[COLOR])
+            print('DVD', end='')
+        bext.goto(0, 0)
+
+        sys.stdout.flush() # (Required for bext-using programs.)
+        time.sleep(PAUSE_AMOUNT)    
+
+            
 
 # If this progra was run (instead of imported), run the game:
 if __name__ == '__main__':
