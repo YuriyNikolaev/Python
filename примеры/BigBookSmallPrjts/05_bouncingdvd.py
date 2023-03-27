@@ -71,6 +71,45 @@ def main():
             elif logo[X] == 0 and logo[Y] == HEIGHT - 1:
                 logo[DIR] = UP_RIGHT
                 cornerBounces += 1
+            elif logo[X] == WIDTH - 3 and logo[Y] == 0:
+                logo[DIR] = DOWN_LEFT
+                cornerBounces += 1
+            elif logo[X] == WIDTH and logo[Y] == HEIGHT - 1:
+                logo[DIR] = UP_LEFT
+                cornerBounces += 1
+
+            # See if the logo bounces off the left edge:
+            elif logo[X] == 0 and logo[DIR] == UP_LEFT:
+                logo[DIR] = UP_RIGHT
+            elif logo[X] == 0 and logo[DIR] == DOWN_LEFT:
+                logo[DIR] = DOWN_RIGHT
+            
+            # See if the logo bounces off the right edge:
+            # (WIDTH - 3 because 'DVD' has 3 letters.)
+            elif logo[X] == WIDTH - 3 and logo[DIR] == UP_RIGHT:
+                logo[DIR] = UP_LEFT
+            elif logo[X] == WIDTH - 3 and logo[DIR] == DOWN_RIGHT:
+                logo[DIR] = DOWN_LEFT
+
+            # See if the logo bounces off the top edge:
+            elif logo[Y] == 0 and logo[DIR] == UP_LEFT:
+                logo[DIR] == DOWN_LEFT
+            elif logo[Y] == 0 and logo[DIR] == UP_RIGHT:
+                logo[DIR] = DOWN_RIGHT
+
+            # See if the logo bonces off the bottom edge:
+            elif logo[Y] == HEIGHT - 1 and logo[DIR] == DOWN_LEFT:
+                logo[DIR] == UP_LEFT
+            elif logo[Y] == HEIGHT - 1 and logo[DIR] == DOWN_RIGHT:
+                logo[DIR] == UP_RIGHT
+
+            if logo[DIR] != originalDirection:
+                # Change color when the logo bounces:
+                logo[COLOR] = random.choice(COLORS)
+            
+            # Move the logo. (X moves by 2 because the terminal
+            # characters are twice as tall as they are wide.)
+            
 
 
 # If this progra was run (instead of imported), run the game:
